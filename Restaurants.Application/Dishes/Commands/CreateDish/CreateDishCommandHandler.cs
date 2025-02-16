@@ -8,9 +8,9 @@ using Restaurants.Domain.Repositories;
 namespace Restaurants.Application.Dishes.Commands.CreateDish;
 
 public class CreateDishCommandHandler(ILogger<CreateDishCommandHandler> logger, 
-    IMapper mapper, IRestaurantsRepository restaurantsRepository,IDishesRepository dishRepository): IRequestHandler<CreateDishCommand>
+    IMapper mapper, IRestaurantsRepository restaurantsRepository,IDishesRepository dishRepository): IRequestHandler<CreateDishCommand, int>
 {
-    public async Task Handle(CreateDishCommand request, CancellationToken cancellationToken)
+    public async Task<int> Handle(CreateDishCommand request, CancellationToken cancellationToken)
     {
         logger.LogInformation("Creating new dish: {@DishRequest}", request);
         var restaurant = await restaurantsRepository.GetRestaurantById(request.RestaurantId);
@@ -19,6 +19,7 @@ public class CreateDishCommandHandler(ILogger<CreateDishCommandHandler> logger,
         
         var dish = mapper.Map<Dish>(request);
 
-        await dishRepository.Create(dish);
+        return await dishRepository.Create(dish);
+        
     }
 }
