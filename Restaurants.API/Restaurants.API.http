@@ -1,10 +1,31 @@
 @Restaurants.API_HostAddress = http://localhost:5069
-POST http://localhost:5069/login
+@token = CfDJ8KZEULbFHtFJhBCe3dZara1RUjWxpApuJ195eQm3JZOTAYYnXtju0cEce3v4H-y6Je6RgKMfIloO3VPCVSIkVU4j651Z-H2ZhVmubJ9YBirf9vGltuWt1HS06JJ1Or93oObOk9iyee7t8cCo-aQFAKkxG2j4-et2HdPaNoNW2U0K5D-jYsvQntJlMDhZUxnBjxRHgVBI2-fZe-4y2ODzvIK3HCjKLm9Eu9TYlxUXJ-ykD-V5hcgDwK60onOED3GQhUIG9EN_zSwqnu9avMLDC1P2_ZkdzLdf_pYMfbfBOjYHf_GgcTBwG3hDydscz08H5ImzJQSGHUQmuuKy5-pkTvhunJHvcw6YkTHUOvn3kKwvbLsk-FWYNBt8rkvw5ZgmPGb-Jhv8uHJ3AJjUeRYo-ZlTS5yNT42zPTno2T9n-UtmujUImi5ojsyW72K-JkH3hZ0e2amMXFdiCoQ5ul07CR_upG_rT2MDWufD0Ug_3rAA0vbmuJh41LXBDBxz2uN11ZLyTYU3ETG4WRGUoCB6rQ8NcJDrJ1MKMKuOyI_ynaRJcYlUK7GfYGr4L75BGR-YLW1HR5OfKjhvTUQTgeoCKkVlo0dBxvwmdqBFUOoVkvxv90vLZTCvbiH1BkgMnZTallx0v0_zLlR-IRXJ00TNYX4mR3tc5iP_5vCrOlhQqZKo6A68HPHLb7MMLY4zfraqJA
+
+GET http://localhost:5069/api/restaurants 
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+
+###
+
+POST http://localhost:5069/api/identity/register
+Content-Type: application/json
+
+{
+  "email": "testuser@test.com",
+  "password": "Password1"
+}
+
+
+
+###
+
+POST http://localhost:5069/api/identity/login
 Content-Type: application/json
 
 {
     "email": "testuser@test.com",
-    "password": "Password1"
+    "password": "Password1!"
 }
 
 
